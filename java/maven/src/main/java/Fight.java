@@ -13,17 +13,39 @@ public class Fight {
     }
 
     public void start(){
-        while(true){
-            offensivePlayer.attack(defensivePlayer);
-            if(defensivePlayer.getHp()<=0){
-                printer.println(defensivePlayer.getName()+"被打败了");
-                break;
-            }
-            defensivePlayer.attack(offensivePlayer);
-            if(offensivePlayer.getHp()<=0){
-                printer.println(offensivePlayer.getName()+"被打败了");
-                break;
-            }
+
+        boolean fightEnd=false;
+        while(!fightEnd){
+            fightEnd = attackAndPrint(offensivePlayer,defensivePlayer);
+                if(!fightEnd){
+                    fightEnd = attackAndPrint(defensivePlayer,offensivePlayer);
+                }
+
+//            offensivePlayer.attack(defensivePlayer);
+//            if(defensivePlayer.getHp()<=0){
+//                printer.println(defensivePlayer.getName()+"被打败了");
+//                break;
+//            }
+//
+//            defensivePlayer.attack(offensivePlayer);
+//            if(offensivePlayer.getHp()<=0){
+//                printer.println(offensivePlayer.getName()+"被打败了");
+//                break;
+//            }
         }
+
+    }
+
+
+
+     boolean attackAndPrint(Player attacker,Player defender){
+        attacker.attack(defender);
+        if(defender.getHp()<=0) {
+            printer.println(defender.getName() + "被打败了");
+            return true;
+        }
+        return false;
+
+
     }
 }

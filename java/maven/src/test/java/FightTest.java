@@ -23,7 +23,7 @@ public class FightTest {
     }
 
     @Test
-    public void b_should_be_killed_when_b_is_stronger(){
+    public void should_be_killed_when_b_is_stronger(){
         Player p1=new Player("a",100,10);
         Player p2=new Player("b", 100, 2);
         PrintStream printStream=mock(PrintStream.class);
@@ -32,6 +32,29 @@ public class FightTest {
         verify(printStream).println("b被打败了");
 
     }
+
+    @Test
+    public void should_retuen_true_When_sb_is_killed(){
+        Player p1=new Player("a",100,50);
+        Player p2=new Player("b", 30, 2);
+        PrintStream printStream=mock(PrintStream.class);
+        Fight fight=new Fight(p1,p2,printStream);
+        assertEquals(true, fight.attackAndPrint(p1, p2));
+        verify(printStream).println("b被打败了");
+
+    }
+
+    @Test
+    public void should_retuen_false_When_nobody_is_killed(){
+        Player p1=new Player("a",100,50);
+        Player p2=new Player("b", 100, 2);
+        PrintStream printStream=mock(PrintStream.class);
+        Fight fight=new Fight(p1,p2,printStream);
+        assertEquals(false, fight.attackAndPrint(p1, p2));
+        verify(printStream,times(0)).println("b被打败了");
+
+    }
+
 
 
 }
