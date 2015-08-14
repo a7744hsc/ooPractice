@@ -40,6 +40,8 @@ public class Fight {
 
      boolean attackAndPrint(Player attacker,Player defender){
         attacker.attack(defender);
+        String attackInfo=attacker.getName()+"攻击了"+defender.getName()+","+defender.getName()+"受到了"+attacker.getAtk()+"点伤害,"+defender.getName()+"剩余生命："+defender.getHp();
+         printer.println(attackInfo);
         if(defender.getHp()<=0) {
             printer.println(defender.getName() + "被打败了");
             return true;

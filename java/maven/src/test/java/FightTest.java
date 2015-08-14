@@ -55,6 +55,17 @@ public class FightTest {
 
     }
 
+    @Test
+    public void should_print_info_when_attack(){
+        Player p1=new Player("a",100,50);
+        Player p2=new Player("b", 100, 2);
+        PrintStream printStream=mock(PrintStream.class);
+        Fight fight=new Fight(p1,p2,printStream);
+        fight.attackAndPrint(p1,p2);
+        verify(printStream).println("a攻击了b,b受到了50点伤害,b剩余生命：50");
+
+    }
+
 
 
 }
