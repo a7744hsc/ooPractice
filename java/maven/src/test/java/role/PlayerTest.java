@@ -1,4 +1,8 @@
+package role;
+
 import org.junit.Test;
+import role.Player;
+
 import static org.junit.Assert.*;
 
 

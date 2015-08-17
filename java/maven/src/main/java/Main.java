@@ -1,3 +1,5 @@
+import role.Player;
+
 /**
  * Created by hchan on 8/12/15.
  */

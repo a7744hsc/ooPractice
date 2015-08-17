@@ -1,3 +1,5 @@
+import role.Player;
+
 import java.io.PrintStream;
 
 /**
@@ -17,9 +19,9 @@ public class Fight {
         boolean fightEnd=false;
         while(!fightEnd){
             fightEnd = attackAndPrint(offensivePlayer,defensivePlayer);
-                if(!fightEnd){
-                    fightEnd = attackAndPrint(defensivePlayer,offensivePlayer);
-                }
+            if(!fightEnd){
+                fightEnd = attackAndPrint(defensivePlayer,offensivePlayer);
+            }
 
 //            offensivePlayer.attack(defensivePlayer);
 //            if(defensivePlayer.getHp()<=0){
@@ -39,8 +41,7 @@ public class Fight {
 
 
      boolean attackAndPrint(Player attacker,Player defender){
-        attacker.attack(defender);
-        String attackInfo=attacker.getName()+"攻击了"+defender.getName()+","+defender.getName()+"受到了"+attacker.getAtk()+"点伤害,"+defender.getName()+"剩余生命："+defender.getHp();
+        String attackInfo = attacker.attack(defender);
          printer.println(attackInfo);
         if(defender.getHp()<=0) {
             printer.println(defender.getName() + "被打败了");
